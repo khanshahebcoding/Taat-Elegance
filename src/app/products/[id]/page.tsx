@@ -148,9 +148,9 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               {/* Action Area */}
               <div className="space-y-8 pt-4">
                 <div className="space-y-4">
-                  <p className="text-[10px] uppercase font-bold tracking-widest text-secondary flex items-center gap-2">
+                  <div className="text-[10px] uppercase font-bold tracking-widest text-secondary flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-accent" /> Select Palette
-                  </p>
+                  </div>
                   <div className="flex gap-4">
                     {product.colors.map((c) => (
                       <button 
