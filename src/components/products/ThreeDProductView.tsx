@@ -20,31 +20,32 @@ export function ThreeDProductView({ imageUrl }: ThreeDProductViewProps) {
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
     containerRef.current.appendChild(renderer.domElement);
 
-    // Create a cylinder to represent a folded saree roll or a plane for texture
-    const geometry = new THREE.CylinderGeometry(1.5, 1.5, 4, 32);
+    // Create a cylinder to represent a folded saree roll
+    const geometry = new THREE.CylinderGeometry(1.5, 1.5, 4.5, 32);
     
     const textureLoader = new THREE.TextureLoader();
     const texture = textureLoader.load(imageUrl);
     const material = new THREE.MeshStandardMaterial({ 
       map: texture,
-      roughness: 0.5,
+      roughness: 0.7,
       metalness: 0.1
     });
 
     const cylinder = new THREE.Mesh(geometry, material);
     scene.add(cylinder);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0xffffff, 1);
-    pointLight.position.set(5, 5, 5);
-    scene.add(pointLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
 
-    camera.position.z = 6;
+    camera.position.z = 7;
 
     let isDragging = false;
     let previousMousePosition = { x: 0, y: 0 };
@@ -77,7 +78,7 @@ export function ThreeDProductView({ imageUrl }: ThreeDProductViewProps) {
     const animate = () => {
       requestAnimationFrame(animate);
       if (!isDragging) {
-        cylinder.rotation.y += 0.005;
+        cylinder.rotation.y += 0.003;
       }
       renderer.render(scene, camera);
     };
@@ -101,15 +102,20 @@ export function ThreeDProductView({ imageUrl }: ThreeDProductViewProps) {
       window.removeEventListener('mouseup', handleMouseUp);
       if (containerRef.current) {
         containerRef.current.removeEventListener('mousedown', handleMouseDown);
-        containerRef.current.removeChild(renderer.domElement);
+        if (renderer.domElement.parentElement === containerRef.current) {
+          containerRef.current.removeChild(renderer.domElement);
+        }
       }
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
     };
   }, [imageUrl]);
 
   return (
-    <div className="relative w-full h-full bg-secondary/5 rounded-3xl cursor-grab active:cursor-grabbing flex flex-col items-center justify-center">
+    <div className="relative w-full h-full bg-secondary/5 rounded-3xl cursor-grab active:cursor-grabbing flex flex-col items-center justify-center overflow-hidden">
       <div ref={containerRef} className="w-full h-full" />
-      <div className="absolute bottom-6 glass-panel px-4 py-1 rounded-full text-[10px] uppercase tracking-widest text-secondary font-bold pointer-events-none">
+      <div className="absolute bottom-6 glass-panel px-4 py-1 rounded-full text-[10px] uppercase tracking-widest text-secondary font-bold pointer-events-none select-none">
         Drag to rotate saree roll
       </div>
     </div>
