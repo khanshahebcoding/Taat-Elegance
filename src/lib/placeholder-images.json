@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-saree",
+      "description": "Elegant hand-woven Taat saree with intricate gold patterns",
+      "imageUrl": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzaWxrJTIwc2FyZWV8ZW58MHx8fHwxNzcyMjQyMDE4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "silk saree"
+    },
+    {
+      "id": "product-1",
+      "description": "Rose Pink Jamdani Taat Saree",
+      "imageUrl": "https://images.unsplash.com/photo-1692992193981-d3d92fabd9cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmRpYW4lMjBzYXJlZXxlbnwwfHx8fDE3NzIyNjc1NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "indian saree"
+    },
+    {
+      "id": "product-2",
+      "description": "Wine Maroon Banarasi Taat Saree",
+      "imageUrl": "https://images.unsplash.com/photo-1761125064797-3cb8a6e80a95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0cmFkaXRpb25hbCUyMHNhcmVlfGVufDB8fHx8MTc3MjI1MTgzMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "traditional saree"
+    },
+    {
+      "id": "product-3",
+      "description": "Royal Gold Zari Taat Saree",
+      "imageUrl": "https://images.unsplash.com/photo-1756483509177-bbabd67a3234?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkZXNpZ25lciUyMHNhcmVlfGVufDB8fHx8MTc3MjI2NzU2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "designer saree"
+    },
+    {
+      "id": "artisan",
+      "description": "Master weaver working on a traditional loom",
+      "imageUrl": "https://images.unsplash.com/photo-1638722661753-9b3ab8b4252b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGFuZGxvb20lMjB3ZWF2aW5nfGVufDB8fHx8MTc3MjI2NzU2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "handloom weaving"
+    }
+  ]
 }
