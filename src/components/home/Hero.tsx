@@ -23,7 +23,7 @@ export function Hero() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-saree');
 
   return (
-    <div className="relative w-full h-[85vh] overflow-hidden flex items-center justify-center">
+    <div className="relative w-full min-h-[90vh] pt-24 md:pt-32 overflow-hidden flex items-center justify-center">
       {/* Background Particles */}
       {particles.map((p) => (
         <div
@@ -48,7 +48,7 @@ export function Hero() {
         </div>
       ))}
 
-      <div className="relative z-10 max-w-[1280px] w-full grid md:grid-cols-2 items-center gap-12 px-6">
+      <div className="relative z-10 max-w-[1280px] w-full grid md:grid-cols-2 items-center gap-12 px-6 pb-12">
         <div className="text-center md:text-left space-y-8 animate-fade-in">
           <div className="inline-block px-4 py-1.5 glass-panel rounded-full text-xs font-semibold tracking-widest text-secondary uppercase border-primary/20">
             Heritage Collection 2024
@@ -79,7 +79,7 @@ export function Hero() {
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-1000"
                 priority
-                sizes="100vw"
+                sizes="600px"
                 data-ai-hint={heroImage?.imageHint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 to-transparent" />
