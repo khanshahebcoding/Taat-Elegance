@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -40,7 +41,7 @@ export function MobileNavbar() {
           <span className={cn(
             "text-[10px] font-headline font-bold uppercase tracking-widest transition-opacity duration-300 absolute -bottom-1",
             isActive('/wishlist') ? "opacity-100 text-secondary" : "opacity-0"
-          )}>Loved</span>
+          )}>Wishlist</span>
         </Link>
 
         {/* CART LINK */}
@@ -54,7 +55,7 @@ export function MobileNavbar() {
           <span className={cn(
             "text-[10px] font-headline font-bold uppercase tracking-widest transition-opacity duration-300 absolute -bottom-1",
             isActive('/cart') ? "opacity-100 text-secondary" : "opacity-0"
-          )}>Bag</span>
+          )}>Cart</span>
         </Link>
 
         {/* PROFILE LINK */}
