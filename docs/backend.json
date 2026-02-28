@@ -1,0 +1,1059 @@
+{
+  "entities": {
+    "Category": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Category",
+      "type": "object",
+      "description": "Represents a product category, used to organize and filter Taat Sharee products.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Category entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the category (e.g., 'Jamdani', 'Tangail')."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the category."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the category was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the category was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Artisan": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Artisan",
+      "type": "object",
+      "description": "Represents an artisan who crafted the Taat Sharee, providing background and attribution.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Artisan entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The full name of the artisan."
+        },
+        "bio": {
+          "type": "string",
+          "description": "A short biography or background of the artisan."
+        },
+        "profileImageUrl": {
+          "type": "string",
+          "description": "URL to the artisan's profile image.",
+          "format": "uri"
+        },
+        "region": {
+          "type": "string",
+          "description": "The geographical region or weaving center the artisan is associated with (e.g., 'Tangail', 'Pabna')."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the artisan profile was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the artisan profile was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "bio",
+        "profileImageUrl",
+        "region",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Product": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Product",
+      "type": "object",
+      "description": "Details for a single Taat Sharee product, including multimedia, specifications, and catalog data.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Product entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Taat Sharee product."
+        },
+        "slug": {
+          "type": "string",
+          "description": "A URL-friendly identifier for the product, derived from its name."
+        },
+        "shortDescription": {
+          "type": "string",
+          "description": "A concise summary of the product for quick views and catalog cards."
+        },
+        "longDescription": {
+          "type": "string",
+          "description": "A comprehensive description of the product, including its heritage and craftsmanship."
+        },
+        "categoryId": {
+          "type": "string",
+          "description": "Reference to the Category the product belongs to. (Relationship: Category 1:N Product)"
+        },
+        "artisanId": {
+          "type": "string",
+          "description": "Reference to the Artisan who crafted this product. (Relationship: Artisan 1:N Product)"
+        },
+        "price": {
+          "type": "number",
+          "description": "The current selling price of the product."
+        },
+        "discountPercentage": {
+          "type": "number",
+          "description": "Optional percentage discount applied to the product (e.g., 0.15 for 15% off)."
+        },
+        "stock": {
+          "type": "number",
+          "description": "The number of units currently available in stock."
+        },
+        "region": {
+          "type": "string",
+          "description": "The weaving region associated with the product (e.g., 'Tangail', 'Pabna', 'Jamdani')."
+        },
+        "fabricType": {
+          "type": "string",
+          "description": "The primary fabric type of the Sharee."
+        },
+        "colorHexCodes": {
+          "type": "array",
+          "description": "An array of hexadecimal color codes representing the available colors or dominant colors of the product.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imageUrls": {
+          "type": "array",
+          "description": "An array of URLs for high-quality product images, including model shots and close-ups.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "videoUrl": {
+          "type": "string",
+          "description": "Optional URL to a product video, showcasing the drape and detail.",
+          "format": "uri"
+        },
+        "threeDModelUrl": {
+          "type": "string",
+          "description": "Optional URL to a 3D model file for interactive views (e.g., glTF).",
+          "format": "uri"
+        },
+        "specificationsJson": {
+          "type": "string",
+          "description": "A JSON string representing an array of key-value pairs for comprehensive product specifications (e.g., '[{\"name\": \"Length\", \"value\": \"5.5 meters\"}, {\"name\": \"Border\", \"value\": \"Zari\"}]')."
+        },
+        "averageRating": {
+          "type": "number",
+          "description": "The average rating of the product, derived from customer reviews."
+        },
+        "reviewCount": {
+          "type": "number",
+          "description": "The total number of reviews submitted for the product."
+        },
+        "featured": {
+          "type": "boolean",
+          "description": "Indicates if the product is featured on the homepage or special sections."
+        },
+        "limitedEdition": {
+          "type": "boolean",
+          "description": "Indicates if the product is part of a limited edition collection."
+        },
+        "occasionTags": {
+          "type": "array",
+          "description": "An array of tags indicating suitable occasions for the product (e.g., 'Bridal', 'Festive', 'Everyday', 'Heritage').",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isNewArrival": {
+          "type": "boolean",
+          "description": "Indicates if the product is a recent addition to the catalog."
+        },
+        "isTrending": {
+          "type": "boolean",
+          "description": "Indicates if the product is currently trending based on sales or views."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the product record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the product record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "slug",
+        "shortDescription",
+        "longDescription",
+        "categoryId",
+        "artisanId",
+        "price",
+        "stock",
+        "region",
+        "fabricType",
+        "colorHexCodes",
+        "imageUrls",
+        "specificationsJson",
+        "averageRating",
+        "reviewCount",
+        "featured",
+        "limitedEdition",
+        "occasionTags",
+        "isNewArrival",
+        "isTrending",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a customer profile, linked to external authentication and storing personalized data.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the User entity, typically matching the external authentication (e.g., Firebase Auth UID)."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "The first name of the user."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "The last name of the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "The primary email address of the user.",
+          "format": "email"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "Optional phone number for the user."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the user account was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the user profile was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName",
+        "email",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Address": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Address",
+      "type": "object",
+      "description": "Stores a physical address associated with a user for shipping or billing.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Address entity."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to the User who owns this address. (Relationship: User 1:N Address)"
+        },
+        "label": {
+          "type": "string",
+          "description": "A friendly label for the address (e.g., 'Home', 'Work')."
+        },
+        "recipientName": {
+          "type": "string",
+          "description": "The full name of the recipient for this address."
+        },
+        "addressLine1": {
+          "type": "string",
+          "description": "The first line of the street address."
+        },
+        "addressLine2": {
+          "type": "string",
+          "description": "The second line of the street address (e.g., apartment, suite number)."
+        },
+        "city": {
+          "type": "string",
+          "description": "The city of the address."
+        },
+        "stateProvince": {
+          "type": "string",
+          "description": "The state or province of the address."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "The postal or ZIP code of the address."
+        },
+        "country": {
+          "type": "string",
+          "description": "The country of the address."
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The contact phone number for this address."
+        },
+        "isDefault": {
+          "type": "boolean",
+          "description": "Indicates if this is the user's default shipping address."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the address record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the address record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "label",
+        "recipientName",
+        "addressLine1",
+        "city",
+        "postalCode",
+        "country",
+        "phoneNumber",
+        "isDefault",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Coupon": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Coupon",
+      "type": "object",
+      "description": "Defines discount coupons that can be applied to orders.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Coupon entity."
+        },
+        "code": {
+          "type": "string",
+          "description": "The unique code customers use to apply the coupon."
+        },
+        "description": {
+          "type": "string",
+          "description": "A human-readable description of the coupon's offer."
+        },
+        "discountType": {
+          "type": "string",
+          "description": "The type of discount ('percentage' or 'fixedAmount')."
+        },
+        "discountValue": {
+          "type": "number",
+          "description": "The value of the discount (e.g., 0.10 for 10% off, or 50 for $50 off)."
+        },
+        "minimumOrderAmount": {
+          "type": "number",
+          "description": "The minimum order total required for the coupon to be applicable."
+        },
+        "maxUsageCount": {
+          "type": "number",
+          "description": "The maximum number of times this coupon can be used overall."
+        },
+        "currentUsageCount": {
+          "type": "number",
+          "description": "The current number of times this coupon has been used."
+        },
+        "validFrom": {
+          "type": "string",
+          "description": "The date and time from which the coupon is valid.",
+          "format": "date-time"
+        },
+        "validUntil": {
+          "type": "string",
+          "description": "The date and time until which the coupon is valid.",
+          "format": "date-time"
+        },
+        "isActive": {
+          "type": "boolean",
+          "description": "Indicates if the coupon is currently active and usable."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the coupon was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the coupon was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "code",
+        "description",
+        "discountType",
+        "discountValue",
+        "minimumOrderAmount",
+        "maxUsageCount",
+        "currentUsageCount",
+        "validFrom",
+        "validUntil",
+        "isActive",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Order": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Order",
+      "type": "object",
+      "description": "Records a customer's purchase, including items, payment, and shipping details.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Order entity."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to the User who placed the order. (Relationship: User 1:N Order)"
+        },
+        "orderNumber": {
+          "type": "string",
+          "description": "A human-readable order number for customer reference."
+        },
+        "orderDate": {
+          "type": "string",
+          "description": "The date and time the order was placed.",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the order (e.g., 'Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled', 'Returned')."
+        },
+        "subtotalAmount": {
+          "type": "number",
+          "description": "The total cost of items before shipping and discounts."
+        },
+        "shippingCost": {
+          "type": "number",
+          "description": "The cost of shipping for this order."
+        },
+        "discountAmount": {
+          "type": "number",
+          "description": "The total discount applied to the order."
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "The final total amount paid by the customer."
+        },
+        "shippingAddressId": {
+          "type": "string",
+          "description": "Reference to the Address used for shipping. (Relationship: Address 1:N Order)"
+        },
+        "billingAddressId": {
+          "type": "string",
+          "description": "Reference to the Address used for billing. Can be the same as shipping. (Relationship: Address 1:N Order)"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "The method of payment used (e.g., 'bKash', 'Nagad', 'COD', 'Card')."
+        },
+        "paymentStatus": {
+          "type": "string",
+          "description": "The status of the payment (e.g., 'Pending', 'Paid', 'Refunded')."
+        },
+        "couponId": {
+          "type": "string",
+          "description": "Reference to the Coupon applied to this order, if any. (Relationship: Coupon 1:N Order)"
+        },
+        "trackingNumber": {
+          "type": "string",
+          "description": "The shipping tracking number for the order."
+        },
+        "estimatedDeliveryDate": {
+          "type": "string",
+          "description": "The estimated date and time of delivery.",
+          "format": "date-time"
+        },
+        "orderItemIds": {
+          "type": "array",
+          "description": "References to the OrderItem entities associated with this order. (Relationship: Order 1:N OrderItem)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the order record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the order record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "orderNumber",
+        "orderDate",
+        "status",
+        "subtotalAmount",
+        "shippingCost",
+        "discountAmount",
+        "totalAmount",
+        "shippingAddressId",
+        "paymentMethod",
+        "paymentStatus",
+        "orderItemIds",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "OrderItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "OrderItem",
+      "type": "object",
+      "description": "Represents a single product item within a customer's order.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the OrderItem entity."
+        },
+        "orderId": {
+          "type": "string",
+          "description": "Reference to the Order this item belongs to. (Relationship: Order 1:N OrderItem)"
+        },
+        "productId": {
+          "type": "string",
+          "description": "Reference to the Product being purchased. (Relationship: Product 1:N OrderItem)"
+        },
+        "productSnapshotJson": {
+          "type": "string",
+          "description": "A JSON string containing a snapshot of product details (name, price, imageUrl) at the time of purchase, for historical accuracy (e.g., '{\"name\": \"Jamdani Saree\", \"price\": 15000, \"imageUrl\": \"https://example.com/saree.jpg\"}')."
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The quantity of the product ordered."
+        },
+        "pricePerUnit": {
+          "type": "number",
+          "description": "The price of one unit of the product at the time of purchase, before any order-level discounts."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the order item record was created.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "orderId",
+        "productId",
+        "productSnapshotJson",
+        "quantity",
+        "pricePerUnit",
+        "createdAt"
+      ]
+    },
+    "Review": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Review",
+      "type": "object",
+      "description": "Stores a customer's review and rating for a specific product.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Review entity."
+        },
+        "productId": {
+          "type": "string",
+          "description": "Reference to the Product being reviewed. (Relationship: Product 1:N Review)"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to the User who submitted the review. (Relationship: User 1:N Review)"
+        },
+        "rating": {
+          "type": "number",
+          "description": "The star rating given by the user (typically 1-5)."
+        },
+        "comment": {
+          "type": "string",
+          "description": "The textual comment provided by the user."
+        },
+        "reviewDate": {
+          "type": "string",
+          "description": "The date and time the review was submitted.",
+          "format": "date-time"
+        },
+        "isApproved": {
+          "type": "boolean",
+          "description": "Indicates if the review has been approved by an administrator for public display."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the review record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the review record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "productId",
+        "userId",
+        "rating",
+        "comment",
+        "reviewDate",
+        "isApproved",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Wishlist": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Wishlist",
+      "type": "object",
+      "description": "Stores a user's collection of favorite products for future reference.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Wishlist entity."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to the User who owns this wishlist. (Relationship: User 1:1 Wishlist)"
+        },
+        "productIds": {
+          "type": "array",
+          "description": "An array of product IDs added to the wishlist. (Relationship: Product N:N Wishlist)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the wishlist was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the wishlist was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "productIds",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Cart": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Cart",
+      "type": "object",
+      "description": "Represents a user's active shopping cart, holding items intended for purchase.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Cart entity, typically matching the user's ID."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to the User who owns this cart. (Relationship: User 1:1 Cart)"
+        },
+        "cartItemIds": {
+          "type": "array",
+          "description": "References to the CartItem entities currently in this cart. (Relationship: Cart 1:N CartItem)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the cart was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the cart was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "cartItemIds",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "CartItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "CartItem",
+      "type": "object",
+      "description": "Represents a single product item within a user's shopping cart.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the CartItem entity."
+        },
+        "cartId": {
+          "type": "string",
+          "description": "Reference to the Cart this item belongs to. (Relationship: Cart 1:N CartItem)"
+        },
+        "productId": {
+          "type": "string",
+          "description": "Reference to the Product added to the cart. (Relationship: Product 1:N CartItem)"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The quantity of the product in the cart."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the cart item was added.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the cart item was last updated (e.g., quantity changed).",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "cartId",
+        "productId",
+        "quantity",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "AdminUser": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AdminUser",
+      "type": "object",
+      "description": "Represents an administrative user with specific roles for managing the e-commerce platform.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the AdminUser entity, typically matching the external authentication (e.g., Firebase Auth UID)."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the administrator.",
+          "format": "email"
+        },
+        "role": {
+          "type": "string",
+          "description": "The administrative role assigned to the user (e.g., 'Super Admin', 'Product Manager', 'Order Manager')."
+        },
+        "isActive": {
+          "type": "boolean",
+          "description": "Indicates if the administrator's account is currently active."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the admin user record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the admin user record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "role",
+        "isActive",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/products/{productId}",
+        "definition": {
+          "entityName": "Product",
+          "schema": {
+            "$ref": "#/backend/entities/Product"
+          },
+          "description": "Main collection for all Taat Sharee products. This collection is publicly readable to power the catalog page and product detail views. Admin users have write permissions. Includes fields like 'averageRating' and 'reviewCount' which are denormalized aggregates for efficient display. 'isNewArrival', 'isTrending', 'limitedEdition', 'stock' provide explicit state for catalog badges and availability. 'region' and 'occasionTags' are key fields for filtering."
+        }
+      },
+      {
+        "path": "/categories/{categoryId}",
+        "definition": {
+          "entityName": "Category",
+          "schema": {
+            "$ref": "#/backend/entities/Category"
+          },
+          "description": "Collection of product categories (e.g., 'Jamdani', 'Tangail'). Publicly readable for dynamic catalog filtering and navigation. Admin users have write permissions.",
+          "params": [
+            {
+              "name": "categoryId",
+              "description": "Unique identifier for a product category."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/artisans/{artisanId}",
+        "definition": {
+          "entityName": "Artisan",
+          "schema": {
+            "$ref": "#/backend/entities/Artisan"
+          },
+          "description": "Collection of artisans. Publicly readable for displaying artisan details on product pages and for filtering by weaving region. Admin users have write permissions.",
+          "params": [
+            {
+              "name": "artisanId",
+              "description": "Unique identifier for an artisan."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/coupons/{couponId}",
+        "definition": {
+          "entityName": "Coupon",
+          "schema": {
+            "$ref": "#/backend/entities/Coupon"
+          },
+          "description": "Collection of discount coupons. The 'code' and 'description' of active coupons are publicly readable for display or application. Other sensitive details are restricted. Admin users have full write permissions for management.",
+          "params": [
+            {
+              "name": "couponId",
+              "description": "Unique identifier for a coupon."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "User profile data. Each user can read and write only their own document. The 'userId' in the path ensures authorization independence for this and nested subcollections.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "Unique identifier for a user (Firebase Auth UID)."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/addresses/{addressId}",
+        "definition": {
+          "entityName": "Address",
+          "schema": {
+            "$ref": "#/backend/entities/Address"
+          },
+          "description": "Subcollection storing a user's shipping and billing addresses. Read/write access is restricted to the owner (`request.auth.uid == userId`). The `userId` is implicitly available from the parent path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "Unique identifier for the owner user."
+            },
+            {
+              "name": "addressId",
+              "description": "Unique identifier for an address document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/wishlist/default",
+        "definition": {
+          "entityName": "Wishlist",
+          "schema": {
+            "$ref": "#/backend/entities/Wishlist"
+          },
+          "description": "A single document per user storing their wishlist (1:1 relationship). The document ID is 'default'. Read/write access is restricted to the owner (`request.auth.uid == userId`). The `userId` is implicitly available from the parent path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "Unique identifier for the owner user."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/cart/default",
+        "definition": {
+          "entityName": "Cart",
+          "schema": {
+            "$ref": "#/backend/entities/Cart"
+          },
+          "description": "A single document per user representing their active shopping cart (1:1 relationship). The document ID is 'default'. Read/write access is restricted to the owner (`request.auth.uid == userId`). The `userId` is implicitly available from the parent path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "Unique identifier for the owner user."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/cart/default/items/{cartItemId}",
+        "definition": {
+          "entityName": "CartItem",
+          "schema": {
+            "$ref": "#/backend/entities/CartItem"
+          },
+          "description": "Subcollection storing individual items within a user's shopping cart. Read/write access is restricted to the owner (`request.auth.uid == userId`). Authorization independence is maintained as `userId` is available from the grand-parent path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "Unique identifier for the owner user."
+            },
+            {
+              "name": "cartItemId",
+              "description": "Unique identifier for a cart item."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/orders/{orderId}",
+        "definition": {
+          "entityName": "Order",
+          "schema": {
+            "$ref": "#/backend/entities/Order"
+          },
+          "description": "Subcollection storing a user's past orders. Read access is restricted to the owner (`request.auth.uid == userId`). Admin users also have read/update access for order management. Authorization independence is maintained by the `userId` in the path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "Unique identifier for the owner user."
+            },
+            {
+              "name": "orderId",
+              "description": "Unique identifier for an order."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/orders/{orderId}/items/{orderItemId}",
+        "definition": {
+          "entityName": "OrderItem",
+          "schema": {
+            "$ref": "#/backend/entities/OrderItem"
+          },
+          "description": "Subcollection storing individual items within a specific order. Read access is restricted to the owner (`request.auth.uid == userId`) or admin. Authorization independence is maintained by `userId` from the grand-parent path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "Unique identifier for the owner user."
+            },
+            {
+              "name": "orderId",
+              "description": "Unique identifier for the parent order."
+            },
+            {
+              "name": "orderItemId",
+              "description": "Unique identifier for an order item."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/products/{productId}/reviews/{reviewId}",
+        "definition": {
+          "entityName": "Review",
+          "schema": {
+            "$ref": "#/backend/entities/Review"
+          },
+          "description": "Subcollection storing customer reviews for a specific product. Publicly readable to display on product pages. Write access is restricted to the `userId` who submitted the review (checked against `resource.data.userId`). Admin users can moderate reviews. 'isApproved' field controls public visibility.",
+          "params": [
+            {
+              "name": "productId",
+              "description": "Unique identifier for the product being reviewed."
+            },
+            {
+              "name": "reviewId",
+              "description": "Unique identifier for a review."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/admin_roles/{adminUserId}",
+        "definition": {
+          "entityName": "AdminUser",
+          "schema": {
+            "$ref": "#/backend/entities/AdminUser"
+          },
+          "description": "A top-level collection for Database-Backed Access Control (DBAC). Document existence and its 'role' field determine administrative privileges. Readable by rules to check `request.auth.uid` against `{adminUserId}`. Writeable only by 'Super Admin' roles.",
+          "params": [
+            {
+              "name": "adminUserId",
+              "description": "Unique identifier for an admin user (Firebase Auth UID)."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure for 'Taat Elegance' is designed with a strong emphasis on Authorization Independence, Structural Segregation, and clear Access Modeling, ensuring security, scalability, and debuggability in line with the core design principles.The primary goal for the catalog page is to provide fast, secure, and flexible access to product data while enabling advanced filtering and sorting. This is achieved through the `/products/{productId}` collection, which serves as the central repository for all product details.\n\n**Authorization Independence via Denormalization:**\n\n1.  **Public Collections (`/products`, `/categories`, `/artisans`, `/coupons`):** These collections hold data that is globally accessible for reading. There are no authorization dependencies between documents within these collections or on user-specific data. For instance, a product's price or description does not depend on who is viewing it or who created it for authorization purposes. This eliminates the need for `get()` calls in security rules, making rules simple (`allow read: if true;` for public data) and atomic operations straightforward.\n2.  **User-Specific Subcollections (`/users/{userId}/addresses`, `/users/{userId}/wishlist`, `/users/{userId}/cart`, `/users/{userId}/cart/{cartId}/items`, `/users/{userId}/orders`, `/users/{userId}/orders/{orderId}/items`, `/products/{productId}/reviews`):** All user-specific data is nested under `/users/{userId}/`. For collections like `addresses`, `cart`, `wishlist`, and `orders`, the `{userId}` wildcard in the path directly provides the authorization context. This means security rules can directly compare `request.auth.uid` with `{userId}` from the path, ensuring that a user can only access their own data without performing additional `get()` operations to check ownership. For example, a `CartItem` in `/users/{userId}/cart/default/items/{cartItemId}` does not need to read its parent `/users/{userId}/cart/default` document to authorize access; the parent path itself provides the `userId` for authentication. Similarly, `Review` documents are stored under `/products/{productId}/reviews/{reviewId}` and contain a `userId` field, allowing direct comparison with `request.auth.uid` for authoring rules without fetching the user's profile.\n\n**Support for QAPs (Queryable Access Patterns):**\n\n1.  **Publicly Queryable Data (`/products`, `/categories`, `/artisans`):** These collections are designed for broad public access and listing. Security rules will grant universal read access, ensuring that `list` queries (e.g., fetching all products for the catalog page, filtering by category, or sorting by price) can be performed efficiently by any user without rules implicitly filtering results based on identity. The frontend application will construct the desired queries using `where()`, `orderBy()`, and `limit()`, and the rules will simply validate read access for the *requested* data.\n2.  **User-Scoped Queryable Data (`/users/{userId}/...` collections):** By strictly organizing user-specific data under `/users/{userId}/`, `list` operations naturally adhere to QAPs. For instance, when a user requests their wishlist (`/users/{userId}/wishlist`), the security rules ensure that `request.auth.uid` matches `{userId}` in the path. This guarantees that `list` queries (e.g., `db.collection('users').doc(uid).collection('addresses').get()`) will only return data owned by the authenticated user, without the rules trying to filter a broader, unauthorized set of results. This structural design makes user-specific data implicitly secure and easily queryable by the owner.\n3.  **Reviews (`/products/{productId}/reviews`):** Reviews are publicly readable to display on product pages, facilitating `list` operations to fetch all reviews for a given product. Write access is restricted to the user who created the review (checked against `resource.data.userId`), ensuring secure authorship while allowing public visibility."
+  }
+}
