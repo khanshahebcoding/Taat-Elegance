@@ -45,6 +45,7 @@ export function ProductCard({ id, name, price, image, category, isNew }: Product
           alt={name}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-700"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
            <Button size="icon" variant="secondary" className="rounded-full w-10 h-10 glass-panel shadow-lg">

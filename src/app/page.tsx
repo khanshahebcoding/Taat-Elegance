@@ -23,6 +23,7 @@ export default function Home() {
               alt={artisanImage?.description || ''} 
               fill 
               className="object-cover"
+              sizes="100vw"
               data-ai-hint={artisanImage?.imageHint}
             />
             <div className="absolute inset-0 bg-secondary/10" />

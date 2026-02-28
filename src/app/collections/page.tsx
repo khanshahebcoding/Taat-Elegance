@@ -103,6 +103,7 @@ export default function CollectionsPage() {
                 fill 
                 className="object-cover"
                 priority
+                sizes="100vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/30 to-transparent" />
             </div>
@@ -145,6 +146,7 @@ export default function CollectionsPage() {
                   alt={collection.title} 
                   fill 
                   className="object-cover group-hover:scale-105 transition-transform duration-1000" 
+                  sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-secondary/5 group-hover:bg-transparent transition-colors" />
               </div>
@@ -177,7 +179,7 @@ export default function CollectionsPage() {
                 {collection.previews.map((item, pIdx) => (
                   <div key={pIdx} className="glass-card rounded-[2rem] p-3 group">
                     <div className="relative aspect-[3/4] rounded-[1.5rem] overflow-hidden mb-4">
-                      <Image src={item.image} alt={item.name} fill className="object-cover" />
+                      <Image src={item.image} alt={item.name} fill className="object-cover" sizes="100vw" />
                       <button className="absolute top-4 right-4 w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary opacity-0 group-hover:opacity-100 transition-all hover:scale-110">
                         <Heart className="w-5 h-5" />
                       </button>
@@ -210,6 +212,7 @@ export default function CollectionsPage() {
                   alt="Artisan Story" 
                   fill 
                   className="object-cover" 
+                  sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-secondary/10" />
               </div>

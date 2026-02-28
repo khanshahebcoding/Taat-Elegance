@@ -79,6 +79,7 @@ export function Hero() {
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-1000"
                 priority
+                sizes="100vw"
                 data-ai-hint={heroImage?.imageHint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 to-transparent" />

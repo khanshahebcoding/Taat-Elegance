@@ -67,6 +67,7 @@ export default function HeritagePage() {
                 fill 
                 className="object-cover"
                 priority
+                sizes="100vw"
                 data-ai-hint="handloom weaving"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/30 to-transparent" />
@@ -87,6 +88,7 @@ export default function HeritagePage() {
               alt="Handloom Detail" 
               fill 
               className="object-cover"
+              sizes="100vw"
               data-ai-hint="weaving loom"
             />
             <div className="absolute inset-0 bg-secondary/5" />
@@ -164,6 +166,7 @@ export default function HeritagePage() {
                   alt="Senior Artisan" 
                   fill 
                   className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                  sizes="100vw"
                   data-ai-hint="artisan portrait"
                 />
                 <div className="absolute inset-0 bg-secondary/10" />
@@ -238,6 +241,7 @@ export default function HeritagePage() {
               alt="Art of Weaving Video" 
               fill 
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              sizes="100vw"
               data-ai-hint="silk saree"
             />
             <div className="absolute inset-0 bg-secondary/20 group-hover:bg-secondary/10 transition-colors" />

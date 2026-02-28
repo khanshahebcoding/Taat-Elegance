@@ -29,7 +29,13 @@ export default function CartPage() {
             {[1, 2].map((item) => (
               <div key={item} className="glass-panel rounded-3xl p-6 flex flex-col sm:flex-row items-center gap-8 animate-fade-in">
                 <div className="relative w-32 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg shrink-0">
-                  <Image src={p1?.imageUrl || ''} alt="Product" fill className="object-cover" />
+                  <Image 
+                    src={p1?.imageUrl || ''} 
+                    alt="Product" 
+                    fill 
+                    className="object-cover" 
+                    sizes="128px"
+                  />
                 </div>
                 <div className="flex-1 text-center sm:text-left space-y-2">
                   <h3 className="text-xl font-headline text-secondary font-bold">Royal Gold Jamdani</h3>
