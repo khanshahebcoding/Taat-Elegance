@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import { MobileNavbar } from '@/components/layout/MobileNavbar';
 
 export const metadata: Metadata = {
   title: 'Taat Elegance | Heritage Saree Boutique',
@@ -20,9 +21,10 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased bg-background text-foreground">
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col pb-24 lg:pb-0">
           {children}
         </div>
+        <MobileNavbar />
         <Toaster />
       </body>
     </html>
