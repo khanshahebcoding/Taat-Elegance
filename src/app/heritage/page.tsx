@@ -68,7 +68,6 @@ export default function HeritagePage() {
                 className="object-cover"
                 priority
                 sizes="(max-width: 768px) 100vw, 450px"
-                data-ai-hint="handloom weaving"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/30 to-transparent" />
             </div>
@@ -89,7 +88,6 @@ export default function HeritagePage() {
               fill 
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 600px"
-              data-ai-hint="weaving loom"
             />
             <div className="absolute inset-0 bg-secondary/5" />
           </div>
@@ -167,7 +165,6 @@ export default function HeritagePage() {
                   fill 
                   className="object-cover group-hover:scale-105 transition-transform duration-1000"
                   sizes="(max-width: 768px) 100vw, 400px"
-                  data-ai-hint="artisan portrait"
                 />
                 <div className="absolute inset-0 bg-secondary/10" />
               </div>
@@ -218,7 +215,7 @@ export default function HeritagePage() {
       <section className="py-16 md:py-24 px-6 bg-secondary/5 relative overflow-hidden">
         {/* Subtle Watermark */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none w-full h-full flex items-center justify-center">
-          <svg width="400" height="400" md:width="600" md:height="600" viewBox="0 0 100 100" className="text-primary">
+          <svg viewBox="0 0 100 100" className="text-primary w-[320px] h-[320px] md:w-[600px] md:h-[600px]">
             <path d="M50 0 L100 50 L50 100 L0 50 Z" fill="currentColor" />
           </svg>
         </div>
@@ -242,7 +239,6 @@ export default function HeritagePage() {
               fill 
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
               sizes="(max-width: 1280px) 100vw, 1100px"
-              data-ai-hint="silk saree"
             />
             <div className="absolute inset-0 bg-secondary/20 group-hover:bg-secondary/10 transition-colors" />
             <div className="absolute inset-0 flex items-center justify-center">
