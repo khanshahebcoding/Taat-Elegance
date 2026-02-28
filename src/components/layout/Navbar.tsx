@@ -44,13 +44,44 @@ export function Navbar() {
       isScrolled ? "py-2" : "py-4"
     )}>
       <div className={cn(
-        "max-w-[1280px] w-full glass-panel rounded-full px-8 py-2 flex items-center justify-between transition-all duration-500",
+        "max-w-[1280px] w-full glass-panel rounded-full px-4 sm:px-8 py-2 flex items-center justify-between transition-all duration-500",
         isScrolled ? "shadow-2xl border-white/60" : "shadow-xl border-white/30"
       )}>
-        <div className="flex items-center gap-12">
-          <Link href="/" className="font-headline text-2xl font-bold tracking-widest text-secondary group transition-all">
+        <div className="flex items-center gap-4 lg:gap-12">
+          {/* MOBILE MENU TRIGGER */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="lg:hidden rounded-full hover:bg-primary/10 text-secondary">
+                <Menu className="w-5 h-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="glass-panel border-r-white/40 w-[280px] sm:w-[350px] rounded-r-[3rem]">
+              <SheetHeader className="mb-8 text-left">
+                <SheetTitle className="font-headline text-3xl text-secondary italic">Menu</SheetTitle>
+              </SheetHeader>
+              <nav className="flex flex-col gap-6 text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">
+                <Link href="/products" className="hover:text-primary transition-colors flex items-center justify-between group">
+                  Catalog <ChevronRight className="w-4 h-4 opacity-50 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link href="/collections" className="hover:text-primary transition-colors flex items-center justify-between group">
+                  Collections <ChevronRight className="w-4 h-4 opacity-50 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link href="/heritage" className="hover:text-primary transition-colors flex items-center justify-between group">
+                  Heritage <ChevronRight className="w-4 h-4 opacity-50 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </nav>
+              <div className="mt-12 pt-8 border-t border-primary/10 space-y-4">
+                <p className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground">Account</p>
+                <Link href="/dashboard" className="block text-xs font-medium text-secondary hover:text-primary">My Profile</Link>
+                <Link href="/dashboard/orders" className="block text-xs font-medium text-secondary hover:text-primary">My Orders</Link>
+              </div>
+            </SheetContent>
+          </Sheet>
+
+          <Link href="/" className="font-headline text-lg sm:text-2xl font-bold tracking-widest text-secondary group transition-all shrink-0">
             TAAT <span className="text-primary font-normal group-hover:text-accent transition-colors">ELEGANCE</span>
           </Link>
+          
           <div className="hidden lg:flex items-center gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-secondary/80">
             <Link href="/products" className="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-primary hover:after:w-full after:transition-all">Catalog</Link>
             <Link href="/collections" className="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-primary hover:after:w-full after:transition-all">Collections</Link>
@@ -58,17 +89,17 @@ export function Navbar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1 sm:gap-3">
           {/* SEARCH SYSTEM */}
           <div className="relative flex items-center justify-end">
             <div className={cn(
               "overflow-hidden transition-all duration-500 ease-in-out flex items-center",
-              isSearchOpen ? "w-[300px] opacity-100" : "w-0 opacity-0"
+              isSearchOpen ? "w-[150px] sm:w-[300px] opacity-100" : "w-0 opacity-0"
             )}>
               <Input
                 type="text"
-                placeholder="Search timeless masterpieces..."
-                className="bg-white/40 border-primary/20 rounded-full h-9 pl-4 pr-10 focus-visible:ring-accent italic text-xs"
+                placeholder="Search..."
+                className="bg-white/40 border-primary/20 rounded-full h-8 sm:h-9 pl-3 sm:pl-4 pr-8 sm:pr-10 focus-visible:ring-accent italic text-[10px] sm:text-xs"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -77,27 +108,27 @@ export function Navbar() {
               variant="ghost"
               size="icon"
               className={cn(
-                "rounded-full hover:bg-primary/10 transition-all duration-300",
-                isSearchOpen ? "absolute right-1 text-primary" : "text-secondary"
+                "rounded-full hover:bg-primary/10 transition-all duration-300 w-8 h-8 sm:w-10 sm:h-10",
+                isSearchOpen ? "absolute right-0.5 text-primary" : "text-secondary"
               )}
               onClick={() => setIsSearchOpen(!isSearchOpen)}
             >
-              {isSearchOpen ? <X className="w-5 h-5" /> : <Search className="w-5 h-5" />}
+              {isSearchOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Search className="w-4 h-4 sm:w-5 sm:h-5" />}
             </Button>
             
             {/* Search Results Dropdown (Simulated) */}
             {isSearchOpen && searchQuery.length > 2 && (
-              <div className="absolute top-12 right-0 w-[350px] glass-panel rounded-[2rem] p-4 animate-fade-in shadow-2xl">
+              <div className="absolute top-10 sm:top-12 right-0 w-[280px] sm:w-[350px] glass-panel rounded-[2rem] p-4 animate-fade-in shadow-2xl">
                 <p className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground mb-3 px-2">Suggested for you</p>
                 <div className="space-y-3">
                   {[1, 2].map((i) => (
                     <div key={i} className="flex items-center gap-4 p-2 rounded-2xl hover:bg-primary/5 transition-colors cursor-pointer group">
-                      <div className="w-12 h-12 relative rounded-xl overflow-hidden shadow-sm">
-                        <Image src={PlaceHolderImages[i]?.imageUrl || ''} alt="Saree" fill className="object-cover" sizes="48px" />
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 relative rounded-xl overflow-hidden shadow-sm">
+                        <Image src={PlaceHolderImages[i]?.imageUrl || ''} alt="Saree" fill className="object-cover" sizes="(max-width: 640px) 40px, 48px" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-xs font-bold text-secondary group-hover:text-primary transition-colors">Royal Jamdani Weave</p>
-                        <p className="text-[10px] text-accent font-bold">৳ 12,500</p>
+                        <p className="text-[10px] sm:text-xs font-bold text-secondary group-hover:text-primary transition-colors">Royal Jamdani Weave</p>
+                        <p className="text-[9px] sm:text-[10px] text-accent font-bold">৳ 12,500</p>
                       </div>
                     </div>
                   ))}
@@ -109,10 +140,10 @@ export function Navbar() {
           {/* WISHLIST DRAWER */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full relative hover:bg-primary/10 group">
-                <Heart className={cn("w-5 h-5 transition-all group-hover:scale-110", wishlistCount > 0 ? "text-primary fill-primary/10" : "text-secondary")} />
+              <Button variant="ghost" size="icon" className="rounded-full relative hover:bg-primary/10 group w-8 h-8 sm:w-10 sm:h-10">
+                <Heart className={cn("w-4 h-4 sm:w-5 sm:h-5 transition-all group-hover:scale-110", wishlistCount > 0 ? "text-primary fill-primary/10" : "text-secondary")} />
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-primary text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-pulse border-2 border-white/80">
+                  <span className="absolute top-0 right-0 sm:-top-0.5 sm:-right-0.5 bg-primary text-white text-[7px] sm:text-[8px] font-bold w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full flex items-center justify-center animate-pulse border-2 border-white/80">
                     {wishlistCount}
                   </span>
                 )}
@@ -150,9 +181,9 @@ export function Navbar() {
           {/* CART DRAWER */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full relative hover:bg-primary/10 group">
-                <ShoppingBag className="w-5 h-5 text-secondary group-hover:scale-110 transition-all" />
-                <span className="absolute -top-0.5 -right-0.5 bg-accent text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-white/80">
+              <Button variant="ghost" size="icon" className="rounded-full relative hover:bg-primary/10 group w-8 h-8 sm:w-10 sm:h-10">
+                <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-secondary group-hover:scale-110 transition-all" />
+                <span className="absolute top-0 right-0 sm:-top-0.5 sm:-right-0.5 bg-accent text-white text-[7px] sm:text-[8px] font-bold w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full flex items-center justify-center border-2 border-white/80">
                   {cartItemCount}
                 </span>
               </Button>
@@ -200,8 +231,8 @@ export function Navbar() {
           {/* PROFILE SYSTEM */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 group">
-                <User className="w-5 h-5 text-secondary group-hover:scale-110 transition-all" />
+              <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 group w-8 h-8 sm:w-10 sm:h-10">
+                <User className="w-4 h-4 sm:w-5 sm:h-5 text-secondary group-hover:scale-110 transition-all" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-64 glass-panel rounded-[2rem] p-4 mt-4 shadow-2xl border-white/60 animate-fade-in">
@@ -241,10 +272,6 @@ export function Navbar() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-
-          <Button variant="ghost" size="icon" className="lg:hidden rounded-full hover:bg-primary/10 text-secondary">
-            <Menu className="w-6 h-6" />
-          </Button>
         </div>
       </div>
     </nav>
