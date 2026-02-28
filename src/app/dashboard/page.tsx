@@ -3,6 +3,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Package, Heart, MapPin, CreditCard, Settings, ChevronRight } from 'lucide-react';
 
 export default function DashboardPage() {
